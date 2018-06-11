@@ -1,0 +1,48 @@
+header {
+    text-align: right;
+}
+
+.characters {
+    display: inline-flex;
+}
+#Obi-Wan-Kenobi {
+    height: 100px;
+    width: 100px;
+    background-color: grey;
+    text-align: center;
+    font-size: 10px;
+}
+
+#Luke-Skywalker {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    text-align: center;
+    font-size: 10px;
+}
+
+#Darth-Sidious {
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    text-align: center;
+    font-size: 10px;
+}
+
+#Darth-Maul {
+    height: 100px;
+    width: 100px;
+    background-color: lightblue;
+    text-align: center;
+    font-size: 10px;
+}
+
+img {
+    height: 60px;
+    width: 60px;
+    margin: 5px 20px 3px 20px;
+}
+
+#restart {
+    visibility: hidden;
+}
