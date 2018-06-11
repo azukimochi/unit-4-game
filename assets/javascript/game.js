@@ -1,18 +1,237 @@
 $(document).ready(function() {
-var charChosen = false;
-var myCharacter = "";
-var defender = "";
-var obiHP = 120;
-var lukeHP = 100;
-var sidiousHP = 150;
-var maulHP = 180;
-var yourAttackDmg = 8;
-var myHP;
-var loss = function() {
-    if (myHP == 0 || myHP < 0) {
-        $("p5").text("You've been defeated by " + defender + " Click restart to try again.")
+    var charChosen = false;
+    var myCharacter = "";
+    var defender = "";
+    var obiHP = 120;
+    var lukeHP = 100;
+    var sidiousHP = 150;
+    var maulHP = 180;
+    var yourAttackDmg = 8;
+    var myHP;
+    var enemyHP;
+    var defenderNum = 3;
+
+    var loss = function() {
+        if (myHP == 0 || myHP < 0) {
+            $("p6").text("GAME OVER! You've been defeated (You have no more HP). Click Restart to try again.")
+            $("#restart").css("visibility", "visible");
+            $("p5").text("");
+            $("p7").text("");
+            $(".selectedDefender").text("");
+        }
     }
-}
+    var winMatchObi = function() {
+        if (obiHP == 0 || obiHP < 0) {
+            $("p5").text("You've won the match against " + defender + ". Click on another enemy to fight them.");
+            $("p6").text("");
+            $("p7").text("");
+            $(".selectedDefender").text("");
+            defender = "";
+            defenderNum--;
+        }
+    }
+
+    var winMatchLuke = function() {
+        if (lukeHP == 0 || lukeHP < 0) {
+            $("p5").text("You've won the match against " + defender + ". Click on another enemy to fight them.");
+            $("p6").text("");
+            $("p7").text("");
+            $(".selectedDefender").text("");
+            defender = "";
+            defenderNum--;
+        }
+    }
+
+    var winMatchSidious = function() {
+        if (sidiousHP == 0 || sidiousHP < 0) {
+            $("p5").text("You've won the match against " + defender + ". Click on another enemy to fight them.");
+            $("p6").text("");
+            $("p7").text("");
+            $(".selectedDefender").text("");
+            defender = "";
+            defenderNum--;
+        }
+    }
+
+    var winMatchMaul = function() {
+        if (maulHP == 0 || maulHP < 0) {
+            $("p5").text("You've won the match against " + defender + ". Click on another enemy to fight them.");
+            $("p6").text("");
+            $("p7").text("");
+            $(".selectedDefender").text("");
+            defender = "";
+            defenderNum--;
+        }
+    }
+
+    var winGame = function() {
+        if (defenderNum == 0 && myHP < 1) {
+            $("p5").text("");
+            $("p6").text("You've defeated everyone, but now you're gone too! It's a tie! Game over! Restart to play again!");
+            $("#restart").css("visibility", "visible");
+        } else if (defenderNum == 0 && myHP > 0) {
+            $("p5").text("");
+            $("p6").text("You won! Game over! Restart to play again!");
+            $("#restart").css("visibility", "visible");
+        }
+    }
+    
+
+    var attackFunction = function() {
+        if (myCharacter == "") {
+            alert("You haven't selected your character yet. Click on one of the four available here.");
+        } else if (defender == "") {
+            $("p5").text("There's no enemy here. Click on one of the available enemies to designate them as the defender.");
+        } else if (myCharacter == "Obi-Wan-Kenobi" && defender == "Luke Skywalker") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 5 damage.");
+            myHP = myHP - 5;
+            $("p1").text(myHP);
+            lukeHP = lukeHP - yourAttackDmg;
+            $("p2").text(lukeHP);
+            yourAttackDmg = yourAttackDmg + 8;
+            winMatchLuke();
+            winGame();
+            loss();
+        } else if (myCharacter == "Darth Maul" && defender == "Luke Skywalker") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 5 damage.");
+            myHP = myHP - 5;
+            $("p4").text(myHP);
+            lukeHP = lukeHP - yourAttackDmg;
+            $("p2").text(lukeHP);
+            yourAttackDmg = yourAttackDmg + 8;
+            winMatchLuke();
+            winGame();
+            loss();
+        } else if (myCharacter == "Darth Sidious" && defender == "Luke Skywalker") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 5 damage.");
+            myHP = myHP - 5;
+            $("p3").text(myHP);
+            lukeHP = lukeHP - yourAttackDmg;
+            $("p2").text(lukeHP);
+            yourAttackDmg = yourAttackDmg + 8;
+            winMatchLuke();
+            winGame();
+            loss();
+        } else if (myCharacter == "Luke Skywalker" && defender == "Obi-Wan-Kenobi") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 8 damage.");
+            myHP = myHP - 8;
+            $("p2").text(myHP);
+            obiHP = obiHP - yourAttackDmg;
+            $("p1").text(obiHP);
+            yourAttackDmg = yourAttackDmg + 8;  
+            winMatchObi();
+            winGame();
+            loss();
+        } else if (myCharacter == "Darth Maul" && defender == "Obi-Wan-Kenobi") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 8 damage.");
+            myHP = myHP - 8;
+            $("p4").text(myHP);
+            obiHP = obiHP - yourAttackDmg;
+            $("p1").text(obiHP);
+            yourAttackDmg = yourAttackDmg + 8;  
+            winMatchObi();
+            winGame();
+            loss();
+        } else if (myCharacter == "Darth Sidious" && defender == "Obi-Wan-Kenobi") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 8 damage.");
+            myHP = myHP - 8;
+            $("p3").text(myHP);
+            obiHP = obiHP - yourAttackDmg;
+            $("p1").text(obiHP);
+            yourAttackDmg = yourAttackDmg + 8;  
+            winMatchObi();
+            winGame();
+            loss();
+        } else if (myCharacter == "Obi-Wan-Kenobi" && defender == "Darth Sidious") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 20 damage.");
+            myHP = myHP - 20;
+            $("p1").text(myHP);
+            sidiousHP = sidiousHP - yourAttackDmg;
+            $("p3").text(sidiousHP);
+            yourAttackDmg = yourAttackDmg + 8;
+            winMatchSidious();
+            winGame();
+            loss();    
+        } else if (myCharacter == "Luke Skywalker" && defender == "Darth Sidious") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 20 damage.");
+            myHP = myHP - 20;
+            $("p2").text(myHP);
+            sidiousHP = sidiousHP - yourAttackDmg;
+            $("p3").text(sidiousHP);
+            yourAttackDmg = yourAttackDmg + 8;   
+            winMatchSidious();
+            winGame();
+            loss();
+        } else if (myCharacter == "Darth Maul" && defender == "Darth Sidious") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 20 damage.");
+            myHP = myHP - 20;
+            $("p4").text(myHP);
+            sidiousHP = sidiousHP - yourAttackDmg;
+            $("p3").text(sidiousHP);
+            yourAttackDmg = yourAttackDmg + 8; 
+            winMatchSidious();
+            winGame();
+            loss();
+        } else if (myCharacter == "Obi-Wan-Kenobi" && defender == "Darth Maul") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 25 damage.");
+            myHP = myHP - 25;
+            $("p1").text(myHP);
+            maulHP = maulHP - yourAttackDmg;
+            $("p4").text(maulHP);
+            yourAttackDmg = yourAttackDmg + 8; 
+            winMatchMaul();
+            winGame();
+            loss();
+        } else if (myCharacter == "Luke Skywalker" && defender == "Darth Maul") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 25 damage.");
+            myHP = myHP - 25;
+            $("p2").text(myHP);
+            maulHP = maulHP - yourAttackDmg;
+            $("p4").text(maulHP);
+            yourAttackDmg = yourAttackDmg + 8; 
+            winMatchMaul();
+            winGame();
+            loss();
+        } else if (myCharacter == "Darth Sidious" && defender == "Darth Maul") {
+            // alert("You are fighting " + defender + " and you are " + myCharacter);
+            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
+            $("p7").text(defender + " attacked you back for 25 damage.");
+            myHP = myHP - 25;
+            $("p3").text(myHP);
+            maulHP = maulHP - yourAttackDmg;
+            $("p4").text(maulHP);
+            yourAttackDmg = yourAttackDmg + 8; 
+            winMatchMaul();
+            winGame();
+            loss();
+        }
+    }
+
+
+
+    //End of variables
 
     $("#Obi-Wan-Kenobi").click(function() {
         if (myCharacter =="") {
@@ -25,11 +244,12 @@ var loss = function() {
         } else if (myCharacter == "Obi-Wan-Kenobi") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
-            $("#Obi-Wan-Kenobi").appendTo(".defender-row");
+            $("#Obi-Wan-Kenobi").appendTo(".selectedDefender");
             defender = "Obi-Wan-Kenobi";
+            enemyHP = obiHP;
             $("p5").text("");
         } else {
-            alert("You've already picked one defender. You can only fight one enemy at a time.");
+            alert("Note for if your character is still alive: You've already picked one defender. You can only fight one enemy at a time.");
         }
     });
 
@@ -44,11 +264,12 @@ var loss = function() {
         } else if (myCharacter == "Luke Skywalker") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
-            $("#Luke-Skywalker").appendTo(".defender-row");
+            $("#Luke-Skywalker").appendTo(".selectedDefender");
             defender = "Luke Skywalker";
+            enemyHP = lukeHP;
             $("p5").text("");
         } else {
-            alert("You've already picked one defender. You can only fight one enemy at a time.");
+            alert("Note for if your character is still alive: You've already picked one defender. You can only fight one enemy at a time.");
         }
     });
 
@@ -63,11 +284,12 @@ var loss = function() {
         } else if (myCharacter == "Darth Sidious") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
-            $("#Darth-Sidious").appendTo(".defender-row");
+            $("#Darth-Sidious").appendTo(".selectedDefender");
             defender = "Darth Sidious";
+            enemyHP = sidiousHP;
             $("p5").text("");
         } else {
-            alert("You've already picked one defender. You can only fight one enemy at a time.");
+            alert("Note for if your character is still alive: You've already picked one defender. You can only fight one enemy at a time.");
         }
     });
 
@@ -82,129 +304,25 @@ var loss = function() {
         } else if (myCharacter == "Darth Maul") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
-            $("#Darth-Maul").appendTo(".defender-row");
+            $("#Darth-Maul").appendTo(".selectedDefender");
             defender = "Darth Maul";
+            enemyHP = maulHP;
             $("p5").text("");
         } else {
-            alert("You've already picked one defender. You can only fight one enemy at a time.");
+            alert("Note for if your character is still alive: You've already picked one defender. You can only fight one enemy at a time.");
         }
     });
 
     $("#attack").click(function() {
-        if (myCharacter == "") {
-            alert("You haven't selected your character yet. Click on one of the four available here.");
-        } else if (defender == "") {
-            $("p5").text("There's no enemy here. Click on one of the available enemies to designate them as the defender.");
-        } else if (myCharacter == "Obi-Wan-Kenobi" && defender == "Luke Skywalker") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 5 damage.");
-            myHP = myHP - 5;
-            $("p1").text(myHP);
-            lukeHP = lukeHP - yourAttackDmg;
-            $("p2").text(lukeHP);
-            yourAttackDmg = yourAttackDmg + 8;
-        } else if (myCharacter == "Darth Maul" && defender == "Luke Skywalker") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 5 damage.");
-            myHP = myHP - 5;
-            $("p4").text(myHP);
-            lukeHP = lukeHP - yourAttackDmg;
-            $("p2").text(lukeHP);
-            yourAttackDmg = yourAttackDmg + 8;
-        } else if (myCharacter == "Darth Sidious" && defender == "Luke Skywalker") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 5 damage.");
-            myHP = myHP - 5;
-            $("p3").text(myHP);
-            lukeHP = lukeHP - yourAttackDmg;
-            $("p2").text(lukeHP);
-            yourAttackDmg = yourAttackDmg + 8;
-        } else if (myCharacter == "Luke Skywalker" && defender == "Obi-Wan-Kenobi") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 8 damage.");
-            myHP = myHP - 8;
-            $("p2").text(myHP);
-            obiHP = obiHP - yourAttackDmg;
-            $("p1").text(obiHP);
-            yourAttackDmg = yourAttackDmg + 8;  
-        } else if (myCharacter == "Darth Maul" && defender == "Obi-Wan-Kenobi") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 8 damage.");
-            myHP = myHP - 8;
-            $("p4").text(myHP);
-            obiHP = obiHP - yourAttackDmg;
-            $("p1").text(obiHP);
-            yourAttackDmg = yourAttackDmg + 8;  
-        } else if (myCharacter == "Darth Sidious" && defender == "Obi-Wan-Kenobi") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 8 damage.");
-            myHP = myHP - 8;
-            $("p3").text(myHP);
-            obiHP = obiHP - yourAttackDmg;
-            $("p1").text(obiHP);
-            yourAttackDmg = yourAttackDmg + 8;  
-        } else if (myCharacter == "Obi-Wan-Kenobi" && defender == "Darth Sidious") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 20 damage.");
-            myHP = myHP - 20;
-            $("p1").text(myHP);
-            sidiousHP = sidiousHP - yourAttackDmg;
-            $("p3").text(sidiousHP);
-            yourAttackDmg = yourAttackDmg + 8;    
-        } else if (myCharacter == "Luke Skywalker" && defender == "Darth Sidious") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 20 damage.");
-            myHP = myHP - 20;
-            $("p2").text(myHP);
-            sidiousHP = sidiousHP - yourAttackDmg;
-            $("p3").text(sidiousHP);
-            yourAttackDmg = yourAttackDmg + 8;   
-        } else if (myCharacter == "Darth Maul" && defender == "Darth Sidious") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 20 damage.");
-            myHP = myHP - 20;
-            $("p4").text(myHP);
-            sidiousHP = sidiousHP - yourAttackDmg;
-            $("p3").text(sidiousHP);
-            yourAttackDmg = yourAttackDmg + 8; 
-        } else if (myCharacter == "Obi-Wan-Kenobi" && defender == "Darth Maul") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 25 damage.");
-            myHP = myHP - 25;
-            $("p1").text(myHP);
-            maulHP = maulHP - yourAttackDmg;
-            $("p4").text(maulHP);
-            yourAttackDmg = yourAttackDmg + 8; 
-            loss();
-        } else if (myCharacter == "Luke Skywalker" && defender == "Darth Maul") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 25 damage.");
-            myHP = myHP - 25;
-            $("p2").text(myHP);
-            maulHP = maulHP - yourAttackDmg;
-            $("p4").text(maulHP);
-            yourAttackDmg = yourAttackDmg + 8; 
-        } else if (myCharacter == "Darth Sidious" && defender == "Darth Maul") {
-            // alert("You are fighting " + defender + " and you are " + myCharacter);
-            $("p6").text("You attacked " + defender + " for " + yourAttackDmg + " damage.");
-            $("p7").text(defender + " attacked you back for 25 damage.");
-            myHP = myHP - 25;
-            $("p3").text(myHP);
-            maulHP = maulHP - yourAttackDmg;
-            $("p4").text(maulHP);
-            yourAttackDmg = yourAttackDmg + 8; 
+        if (myHP > 0) {
+            attackFunction();
         }
     });
+
+    $("#restart").click(function() {
+        location.reload();
+    });
+
+
 
 });
