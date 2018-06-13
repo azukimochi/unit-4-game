@@ -1,5 +1,14 @@
 header {
     text-align: right;
+    margin-right: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.headers {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
 }
 
 .characters {
@@ -8,33 +17,37 @@ header {
 #Obi-Wan-Kenobi {
     height: 100px;
     width: 100px;
-    background-color: grey;
+    background-color: white;
     text-align: center;
     font-size: 10px;
+    border: 3px solid green;
 }
 
 #Luke-Skywalker {
     height: 100px;
     width: 100px;
-    background-color: red;
+    background-color: white;
     text-align: center;
     font-size: 10px;
+    border: 3px solid green;
 }
 
 #Darth-Sidious {
     height: 100px;
     width: 100px;
-    background-color: pink;
+    background-color: white;
     text-align: center;
     font-size: 10px;
+    border: 3px solid green;
 }
 
 #Darth-Maul {
     height: 100px;
     width: 100px;
-    background-color: lightblue;
+    background-color: white;
     text-align: center;
     font-size: 10px;
+    border: 3px solid green;
 }
 
 img {
@@ -45,4 +58,13 @@ img {
 
 #restart {
     visibility: hidden;
+}
+
+body {
+    background-image: url("../images/ship.jpg");
+}
+
+p5, p6, p7 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
 }

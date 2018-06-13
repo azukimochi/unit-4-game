@@ -238,13 +238,22 @@ $(document).ready(function() {
             myCharacter = "Obi-Wan-Kenobi";
             myHP = obiHP;
             $("#Luke-Skywalker").appendTo(".enemies-available");
+            $("#Luke-Skywalker").css("background-color", "red");
+            $("#Luke-Skywalker").css("border", "3px solid black");
             $("#Darth-Maul").appendTo(".enemies-available");
+            $("#Darth-Maul").css("background-color", "red");
+            $("#Darth-Maul").css("border", "3px solid black");
             $("#Darth-Sidious").appendTo(".enemies-available");
+            $("#Darth-Sidious").css("background-color", "red");
+            $("#Darth-Sidious").css("border", "3px solid black");
             $(".enemies-available").css("display", "inline-flex");
         } else if (myCharacter == "Obi-Wan-Kenobi") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
             $("#Obi-Wan-Kenobi").appendTo(".selectedDefender");
+            $("#Obi-Wan-Kenobi").css("background-color", "black");
+            $("#Obi-Wan-Kenobi").css("color", "white");
+            $("#Obi-Wan-Kenobi").css("border", "3px solid green");
             defender = "Obi-Wan-Kenobi";
             enemyHP = obiHP;
             $("p5").text("");
@@ -258,13 +267,22 @@ $(document).ready(function() {
             myCharacter = "Luke Skywalker";
             myHP = lukeHP;
             $("#Obi-Wan-Kenobi").appendTo(".enemies-available");
+            $("#Obi-Wan-Kenobi").css("background-color", "red");
+            $("#Obi-Wan-Kenobi").css("border", "3px solid black");
             $("#Darth-Maul").appendTo(".enemies-available");
+            $("#Darth-Maul").css("background-color", "red");
+            $("#Darth-Maul").css("border", "3px solid black");
             $("#Darth-Sidious").appendTo(".enemies-available");
+            $("#Darth-Sidious").css("background-color", "red");
+            $("#Darth-Sidious").css("border", "3px solid black");
             $(".enemies-available").css("display", "inline-flex");
         } else if (myCharacter == "Luke Skywalker") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
             $("#Luke-Skywalker").appendTo(".selectedDefender");
+            $("#Luke-Skywalker").css("background-color", "black");
+            $("#Luke-Skywalker").css("color", "white");
+            $("#Luke-Skywalker").css("border", "3px solid green");
             defender = "Luke Skywalker";
             enemyHP = lukeHP;
             $("p5").text("");
@@ -277,14 +295,23 @@ $(document).ready(function() {
         if (myCharacter =="") {
             myCharacter = "Darth Sidious";
             myHP = sidiousHP;
-            $("#Obi-Wan-Kenobi").appendTo(".enemies-available");
-            $("#Darth-Maul").appendTo(".enemies-available");
             $("#Luke-Skywalker").appendTo(".enemies-available");
+            $("#Luke-Skywalker").css("background-color", "red");
+            $("#Luke-Skywalker").css("border", "3px solid black");
+            $("#Darth-Maul").appendTo(".enemies-available");
+            $("#Darth-Maul").css("background-color", "red");
+            $("#Darth-Maul").css("border", "3px solid black");
+            $("#Obi-Wan-Kenobi").appendTo(".enemies-available");
+            $("#Obi-Wan-Kenobi").css("background-color", "red");
+            $("#Obi-Wan-Kenobi").css("border", "3px solid black");
             $(".enemies-available").css("display", "inline-flex");
         } else if (myCharacter == "Darth Sidious") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
             $("#Darth-Sidious").appendTo(".selectedDefender");
+            $("#Darth-Sidious").css("background-color", "black");
+            $("#Darth-Sidious").css("color", "white");
+            $("#Darth-Sidious").css("border", "3px solid green");
             defender = "Darth Sidious";
             enemyHP = sidiousHP;
             $("p5").text("");
@@ -297,14 +324,23 @@ $(document).ready(function() {
         if (myCharacter =="") {
             myCharacter = "Darth Maul";
             myHP = maulHP;
-            $("#Obi-Wan-Kenobi").appendTo(".enemies-available");
-            $("#Darth-Sidious").appendTo(".enemies-available");
             $("#Luke-Skywalker").appendTo(".enemies-available");
+            $("#Luke-Skywalker").css("background-color", "red");
+            $("#Luke-Skywalker").css("border", "3px solid black");
+            $("#Obi-Wan-Kenobi").appendTo(".enemies-available");
+            $("#Obi-Wan-Kenobi").css("background-color", "red");
+            $("#Obi-Wan-Kenobi").css("border", "3px solid black");
+            $("#Darth-Sidious").appendTo(".enemies-available");
+            $("#Darth-Sidious").css("background-color", "red");
+            $("#Darth-Sidious").css("border", "3px solid black");
             $(".enemies-available").css("display", "inline-flex");
         } else if (myCharacter == "Darth Maul") {
             alert("Your character is already " + myCharacter + ". You can't fight yourself. Refresh the page to switch your character.");
         } else if (defender == "") {
             $("#Darth-Maul").appendTo(".selectedDefender");
+            $("#Darth-Maul").css("background-color", "black");
+            $("#Darth-Maul").css("color", "white");
+            $("#Darth-Maul").css("border", "3px solid green");
             defender = "Darth Maul";
             enemyHP = maulHP;
             $("p5").text("");
