@@ -10,7 +10,8 @@ $(document).ready(function() {
     var myHP;
     var enemyHP;
     var defenderNum = 3;
-
+    var buttonAudio = document.getElementById("attackAudio");
+    var bgAudio = document.getElementById("bgAudio");
     var loss = function() {
         if (myHP == 0 || myHP < 0) {
             $("p6").text("GAME OVER! You've been defeated (You have no more HP). Click Restart to try again.")
@@ -229,9 +230,36 @@ $(document).ready(function() {
         }
     }
 
+    //declaring function for the attack sound 
+    function playAttackAudio() {
+        buttonAudio.play();
+    }
 
+    //declaring function for the background music
+    function playBgAudio() {
+        bgAudio.play();
+    }
+    // setInterval(function(){playBgAudio();},);
 
-    //End of variables
+    bgAudio.play();
+    
+    function stopBgAudio() {
+        bgAudio.pause();
+    }
+
+    function stopBgMusic() {
+        clearInterval(loopBgMusic);
+    }
+
+    //button to play the background music
+    $("#play").click(function() {
+        playBgAudio();
+    });
+
+    //button to stop the background music
+    $("#pause").click(function() {
+        stopBgAudio();
+    });
 
     $("#Obi-Wan-Kenobi").click(function() {
         if (myCharacter =="") {
@@ -352,6 +380,7 @@ $(document).ready(function() {
     $("#attack").click(function() {
         if (myHP > 0) {
             attackFunction();
+            playAttackAudio();
         }
     });
 

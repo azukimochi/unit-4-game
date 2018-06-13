@@ -13,7 +13,24 @@
 </head>
 
 <body>
+    <audio id="attackAudio">
+        <source src="Game-Death.ogg" type="audio/ogg">
+        <source src="Game-Death.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="bgAudio">
+            <source src="M-GameBG.ogg" type="audio/ogg">
+            <source src="M-GameBG.mp3" type="audio/mpeg">
+    </audio>
+
     <header>Star Wars RPG!</header>
+
+    <div class="background-music-buttons">
+        <header2>Background Music</header2>
+        <br>
+        <button id="play" type="button">Play</button>
+        <button id="pause" type="button">Pause</button>
+    </div>
 
     <div class="your-character-row">
         <h1 class="headers">Your Character</h1>
@@ -61,8 +78,6 @@
         <br><br>
         <button id="restart" type="button">Restart</button>
     </div>
-
-
 
     
 

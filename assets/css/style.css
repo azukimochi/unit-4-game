@@ -11,6 +11,22 @@ header {
     font-size: 20px;
 }
 
+header2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+}
+
+.background-music-buttons {
+    float: right;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+#play, #pause {
+    margin-left: 20%;
+    margin-top: 10px;
+}
+
 .characters {
     display: inline-flex;
 }
